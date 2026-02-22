@@ -21,12 +21,19 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,9 +43,12 @@ import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myapplication.instagramui.compose.screen.DrawerScreen
 import com.example.myapplication.instagramui.ui.theme.InstagramUITheme
 
 class MainActivity : ComponentActivity() {
@@ -47,17 +57,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InstagramUITheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                DrawerScreen()
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Box(modifier= Modifier.fillMaxSize()) {
@@ -67,6 +79,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Spacer(modifier= Modifier.padding(top = 30.dp))
             AppBar( name = "imbishalll")
             ProfileSection()
+
         }
 
 
@@ -131,7 +144,9 @@ fun ProfileSection(modifier: Modifier = Modifier) {
                 .background(Color.Gray)) {
 
             }
-            Spacer(modifier= Modifier.width(20.dp).background(Color.Red))
+            Spacer(modifier= Modifier
+                .width(20.dp)
+                .background(Color.Red))
             Row(modifier= Modifier.weight(1f), horizontalArrangement = Arrangement.SpaceAround){
                 Column(modifier= Modifier,horizontalAlignment = Alignment.CenterHorizontally){
                     Text("1,611", fontSize = 18.sp, fontWeight = FontWeight.Bold)
